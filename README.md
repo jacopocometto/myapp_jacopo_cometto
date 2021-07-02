@@ -53,8 +53,8 @@ Ai campi "author", e "status" vengono assegnati di default i valori "Brian Fox" 
 
 L'id del post da pubblicare può essere recuperato:
 
--dalla lista di tutti i post ( GET /posts/ )
--nel dettaglio del singolo post (GET)
+- dalla lista di tutti i post ( GET /posts/ )
+- nel dettaglio del post ( GET /posts/:postId )
 
 
 
@@ -65,9 +65,9 @@ L'id del post da pubblicare può essere recuperato:
 
 l'id del post da cancellare può essere recuperato:
 
--dalla lista di tutti i post ( GET /posts/ )
--nel dettaglio del post (GET /posts/:postId)
--dalla lista dei post pubblici ( GET /posts/public )
+- dalla lista di tutti i post ( GET /posts/ )
+- nel dettaglio del post (GET /posts/:postId)
+- dalla lista dei post pubblici ( GET /posts/public )
 
 
 
