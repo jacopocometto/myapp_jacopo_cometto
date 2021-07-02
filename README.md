@@ -74,9 +74,11 @@ l'id del post da cancellare può essere recuperato:
 **RICERCA POST TRAMITE HASTAG
 
     Request     URI
-    GET         /posts/:hashtags
+    GET         /posts/tags/:hashtags
 
 Per filtrare i post, se la ricerca è fatta su più hastag, questi vanno inseriti nella URI separati dal carattere "-". Non va invece inserito nella URI il carattere "#". Affinchè il tutto funzioni, in fase di creazione del post, dal front end deve arrivare una richiesta contenente un array di hashtag privi del carattere "#".
 
+Esempio: per ricercare i post contenenti gli hashtag #crescita, #formazione, #benessere, scriveremo
 
- 
+                    localhost:5000/posts/tags/crescita-formazione-benessere
+__
