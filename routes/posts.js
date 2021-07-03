@@ -45,7 +45,7 @@ router.post('/', async (req,res) => {    ;
 });
 
 //Selezionare un post specifico attraverso l'id
-router.get('/:postId', async (req, res) => {
+router.get('/:postId/show', async (req, res) => {
     
      try {
         const post = await Post.findById(req.params.postId);
@@ -56,9 +56,10 @@ router.get('/:postId', async (req, res) => {
 });
 
 //Cancellare un post
-router.delete('/:postId/', async (req,res) => {
+router.delete('/:postId', async (req,res) => {
     try {
-        const removedPost = await Post.remove({ _id : req.params.postId });
+        /* const removedPost = await Post.remove({ _id : req.params.postId }); */
+        const removedPost = await Post.deleteOne({ _id : req.params.postId });
         res.json(removedPost);
     } catch (err) {
         res.json({ message : err });

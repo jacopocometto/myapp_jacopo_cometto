@@ -17,21 +17,21 @@ Di seguito un elenco delle funzionalità con indicate, per ciascuna di esse, il 
 **LISTA DI TUTTI POST:
 
     Request     URI
-    GET         /posts/
+    GET         /posts
 
 
 
 **SHOW DI UN POST SPECIFICO:
 
     Request     URI
-    GET         /posts/:postId
+    GET         /posts/:postId/show
 
 
 
 **CREAZIONE DI UN POST:
 
     Request     URI
-    POST        /posts/
+    POST        /posts
 
 N.B. In fase di creazione di un post, il body della request deve essere un JSON così strutturato:
 
@@ -42,31 +42,31 @@ N.B. In fase di creazione di un post, il body della request deve essere un JSON 
                             }
 Gli hashtag devono essere inseriti nell'array senza il carattere "#" all'inizio.
                                                
-Ai campi "author", e "status" vengono assegnati di default i valori "Brian Fox" e "draft". Pubblicando un post lo stato viene modificato in "public".
+Ai campi "author", e "status" vengono assegnati di default i valori "Brian Fox" e "draft". Pubblicando un post lo stato viene modificato da "draft" in "public".
 
 
 
-**PUBBLICARE UN POST:
+**PUBBLICAZIONE DI UN POST:
 
     Request     URI
     PATCH       /posts/:postId/publish
 
 L'id del post da pubblicare può essere recuperato:
 
-- dalla lista di tutti i post ( GET /posts/ )
-- nel dettaglio del post ( GET /posts/:postId )
+- dalla lista di tutti i post ( GET /posts )
+- nel dettaglio del post ( GET /posts/:postId/show )
 
 
 
-**CANCELLARE UN POST
+**CANCELLAZIONE UN POST
 
     Request     URI
     DELETE      /posts/:postId
 
 l'id del post da cancellare può essere recuperato:
 
-- dalla lista di tutti i post ( GET /posts/ )
-- nel dettaglio del post (GET /posts/:postId)
+- dalla lista di tutti i post ( GET /posts )
+- nel dettaglio del post ( GET /posts/:postId/show )
 - dalla lista dei post pubblici ( GET /posts/public )
 
 
@@ -76,9 +76,11 @@ l'id del post da cancellare può essere recuperato:
     Request     URI
     GET         /posts/tags/:hashtags
 
-Per filtrare i post, se la ricerca è fatta su più hastag, questi vanno inseriti nella URI separati dal carattere "-". Non va invece inserito nella URI il carattere "#". Affinchè il tutto funzioni, in fase di creazione del post, dal front end deve arrivare una richiesta contenente un array di hashtag privi del carattere "#".
+Per filtrare i post, se la ricerca è fatta su più hastag, questi vanno inseriti nella URI separati dal carattere "-". Non va invece inserito nella URI il carattere "#". Affinchè il tutto funzioni, in fase di creazione del post, nel body della request il valore della proprietà "hastags" deve essere un array di hashtag privi del carattere "#".
 
-Esempio: per ricercare i post contenenti gli hashtag #crescita, #formazione, #benessere, scriveremo
+Esempio: per ricercare i post contenenti gli hashtag #sport, #alimentazione, #benessere, scriveremo
 
-                    localhost:5000/posts/tags/crescita-formazione-benessere
+                    localhost:5000/posts/tags/sport-alimentazione-benessere
+
+N.B. La ricerca per hashtag è estesa ai soli post pubblici
 __
